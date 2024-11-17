@@ -1,0 +1,19 @@
+{
+  "name": "chappa-install",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "bin": {
+    "chappa": "cli.js"
+  },
+  "scripts": {
+    "cli-test": "node cli.js --param hello"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "lodash": "^4.17.11",
+    "path": "^0.12.7"
+  },
+  "author": "",
+  "license": "MIT"
+}
