@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "type": "module",
   "bin": {
     "chappa": "cli.js"
   },
   "scripts": {
-    "cli-test": "node cli.js --param hello"
+    "cli-test": "node cli.js params hello",
+    "cli-test-install": "node cli.js install"
   },
   "dependencies": {
+    "chalk": "^5.3.0",
     "commander": "^12.1.0",
     "lodash": "^4.17.11",
     "path": "^0.12.7"

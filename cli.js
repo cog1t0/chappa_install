@@ -1,11 +1,65 @@
 #!/usr/bin/env node
 
-const { Command } = require('commander');
+import chalk from 'chalk';
+
+import { Command } from 'commander';
 const program = new Command();
 
 program
-  .option('-p, --param <value>', 'Add params')
-  .parse(process.argv);
+  .name('chappa')
+  .description('CLI for chappa operations')
+  .version('1.0.0');
 
-const options = program.opts();
-console.log('receive param: %s', options.param);
+  program
+    .command('install')
+    .description('Install something')
+    .action(() => {
+      console.log('Executing install command');
+      const art = `
+                                                                                                      
+        -=-     =***-    =*+:         :.      ..      .-==:            =++-       .#@@%*:             
+       #@@@%-   %@@@@#-::@@@@+       %@@*.   #@@@*: .*@@@@@#-         .@@@@+  .:-=+@@@@@%-:           
+       =@@@@@#+.=@@@@@@@@@@@@@.      +@@@*  .#@@@@@=%@@+*@@@@+         %@@@@%@@@@@@@@@@@@@@@#:        
+        .#@@@@@@@@@@@@@@@@@@@@.       .@@@=   @@@@@@@%:  %@@@@=   :##%@@@@@@@@@@@@@@@@@@@@@@@@.       
+        =@@@@@@@@@@@@@#+*%@@@@.        @@@@: .@@@@@@@-  .@@@@@@   .#@@@@@@@@@@@@%##@@@@@@%@@@*        
+       =@@@@@@%=+@@@@@%*=*@@@@#-      .@@@@+ :@@@@@@*   -@@@@@@.    :=+%@@@@-%@@@##@@@@@-  ..         
+      *@@@@@@@--*@@@@@@@@@@@@@@@*.    :@@@@+ :@@@@@@:   -@@@@@@.       -@@@@@@@@@@@@@@%-              
+      .*@@@@@@@@@@@@@@@@@@@@@@@@@%:   =@@@@= -@@@@@@    =@@@@@@.       .+@@@@@@@@@@@@@@@%*-.          
+         -@@@@@@@@@@@#+++%@@@@*@@@%   +@@@@- -@@@@@@    =@@@@@@      :+@@@@@@@%=+#@@@@@@@@@@#-        
+        -%@@@@@*+@@@@@**=*@@@@-@@@@:  +@@@@- -@@@@@@    =@@@@@@   .-#@@@@@@@@@@%#- :=#@@@@@@@@-       
+      =%@@@@@@%:-%@@@@@@@@@@@@:@@@@:  +@@@@= -@@@@@@.   =@@@@@@.  %@@@@@@@#=#@@@@@*===+#@@@@@@=       
+      #@@@@@@@%@@@@@@@@@@@@@@@ %@@@.  +@@@@= .%@@@@@    =@@@@@@.  -#@@@%+--+#@@@@@@@@@@@@@@@#-        
+       @%%@@@@+%@@@@@@#--#@@@@ :##=   *@@@@+  :*%@%=    -@@@@@@:   .:#@@%@@@@@@@@@@@@@@@@@@@@.        
+       %+.@@@@--*@@@@@#=#@@@@@.      :@@@@@=            :@@@@@@:   %@@@@@@@@@@@@@@@*#@@@@@@@#.        
+       =@+@@@@%*#@@@@@@@@@@@@@.     :%@@@@@%%%#########%@@@@@@@-   :#@@@@%*=#@@@@@%  :%@@@@#.         
+       .%@@@@@@%@@@@@@@@%%@@@@.     =@@@@@* .-+*%@@@@@@@@@@@@@@:   .%@@@@*==#@@@@@%   .%@@@@#         
+        :%@@@@%@@@@@@@%= *@@@@      .*%@@+       .-=*#@@@@@@@@*    :@@@@*%@@@@@@@@%    -@@@@#         
+         .=###.:=+++=:   .+**:         .               .::--:.      .=+:  .:=*#%%#:     .=+-          
+                                                                                                      
+      `;
+
+      const artLines = art.split('\n');
+      const artLength = artLines[1].length; // アスキーアートの幅を取得
+      let position = process.stdout.columns - artLength; // 初期位置を右端に設定
+
+      const interval = setInterval(() => {
+        console.clear();
+        artLines.forEach(line => {
+          console.log(chalk.green(' '.repeat(Math.max(0, position)) + line)); // 色をつける
+        });
+        position--;
+
+        if (position + artLength < 0) {
+          clearInterval(interval);
+        }
+      }, 50);
+  });
+
+  program
+    .command('params <value>')
+    .description('Handle params')
+    .action((value) => {
+      console.log('Received param:', value);
+  });
+
+program.parse(process.argv);
