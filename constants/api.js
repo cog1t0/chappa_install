@@ -1,0 +1,2 @@
+export const OBNIZ_DATA_API = "https://script.google.com/macros/s/AKfycbyGaDbh9gAVRnd9-I6N-J-0KxDp4oMxdOFkbN8Dnei5UsmVQOpUDbtyT56SYhz6PjPlOg/exec";
+export const FORECAST_DATA_API = "https://script.googleusercontent.com/macros/echo?user_content_key=Qodea7ES-PZ9215NHmdjJ2vwhrmxIlbbX-d9_vNXAulxGeBwDENBYT-8AoVaOuIWPCOn1irAdt36TZLcrbZStKLhzaBHrD7_m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnEJcEuDrjRC3l-RY1t0pDkGnenfGGKTew-YsvzutREMs28kgA8cD7DX8UAZo4hsFtivuoNKnzKaMALzZN475gTQTal9bDTKWGNz9Jw9Md8uu&lib=MBbd30Bbr1BQklC0LBEGv7xlqbOJza8Jo";
