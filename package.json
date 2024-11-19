@@ -2,7 +2,7 @@
   "name": "chappa-install",
   "version": "1.0.0",
   "description": "",
-  "private": true,
+  "private": false,
   "type": "module",
   "bin": {
     "chappa": "cli.js"
